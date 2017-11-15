@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController, IonicPage, LoadingController, ViewController } from 'ionic-angular';
+import { AlertController, IonicPage, LoadingController, NavController, ViewController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthProvider } from '../../providers/auth/auth';
+import { HomePage } from '../home/home';
 
 @IonicPage()
 @Component({
@@ -12,6 +13,7 @@ export class LoginPage implements OnInit {
   loginForm: FormGroup;
 
   constructor(private viewCtl: ViewController,
+              private navCtl: NavController,
               private loadCtl: LoadingController,
               private alertCtl: AlertController,
               private fb: FormBuilder,
@@ -34,6 +36,7 @@ export class LoginPage implements OnInit {
     this.authProvider.loginUser(value.email, value.password)
       .then(data => {
         loading.dismiss();
+        this.navCtl.setRoot(HomePage);
       })
       .catch(error => {
         loading.dismiss();
