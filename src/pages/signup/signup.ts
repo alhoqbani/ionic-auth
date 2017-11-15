@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, ViewController } from 'ionic-angular';
+import { AlertController, IonicPage, LoadingController, ViewController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthProvider } from '../../providers/auth/auth';
 
@@ -12,6 +12,8 @@ export class SignupPage implements OnInit {
   signupForm: FormGroup;
 
   constructor(private viewCtl: ViewController,
+              private loadCtl: LoadingController,
+              private alertCtl: AlertController,
               private fb: FormBuilder,
               private authProvider: AuthProvider) {
   }
@@ -26,7 +28,23 @@ export class SignupPage implements OnInit {
 
   onSubmit() {
     const value = this.signupForm.value;
-    this.authProvider.signupUser(value.email, value.password);
+    const loading = this.loadCtl.create({
+      content: 'Singing Up...'
+    });
+    loading.present();
+    this.authProvider.signupUser(value.email, value.password)
+      .then(data => {
+        loading.dismiss();
+      })
+      .catch(error => {
+        loading.dismiss();
+        const alert = this.alertCtl.create({
+          title: 'Sign Up Failed',
+          message: error.message,
+          buttons: ['Ok']
+        });
+        alert.present();
+      });
   }
 
   onCancel() {

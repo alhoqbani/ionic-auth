@@ -9,9 +9,7 @@ export class AuthProvider {
   }
 
   signupUser(email: string, password: string) {
-    firebase.auth().createUserWithEmailAndPassword(email, password)
-      .then(data => console.log(data))
-      .catch(err => console.log(err));
+    return firebase.auth().createUserWithEmailAndPassword(email, password);
   }
 
 }
