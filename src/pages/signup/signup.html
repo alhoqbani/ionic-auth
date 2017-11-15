@@ -13,30 +13,27 @@
       Sign Up
     </ion-card-header>
     <ion-card-content>
-      <ion-list>
-        <ion-item>
-          <ion-label stacked>Name</ion-label>
-          <ion-input type="text"></ion-input>
-        </ion-item>
+      <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+        <ion-list>
+          <ion-item>
+            <ion-label stacked>Name</ion-label>
+            <ion-input type="text" formControlName="name"></ion-input>
+          </ion-item>
 
-        <ion-item>
-          <ion-label stacked>Email</ion-label>
-          <ion-input type="text"></ion-input>
-        </ion-item>
+          <ion-item>
+            <ion-label stacked>Email</ion-label>
+            <ion-input type="email" formControlName="email"></ion-input>
+          </ion-item>
 
-        <ion-item>
-          <ion-label stacked>Username</ion-label>
-          <ion-input type="text"></ion-input>
-        </ion-item>
+          <ion-item>
+            <ion-label stacked>Password</ion-label>
+            <ion-input type="password" formControlName="password"></ion-input>
+          </ion-item>
 
-        <ion-item>
-          <ion-label stacked>Password</ion-label>
-          <ion-input type="password"></ion-input>
-        </ion-item>
-
-        <button ion-button full color="success" (click)="onSignup()">Sign up</button>
-        <button ion-button full color="danger" (click)="onCancel()">Cancel</button>
-      </ion-list>
+          <button ion-button type="submit" full color="success" [disabled]="!signupForm.valid">Sign up</button>
+          <button ion-button type="button" full color="danger" (click)="onCancel()">Cancel</button>
+        </ion-list>
+      </form>
     </ion-card-content>
   </ion-card>
 </ion-content>
