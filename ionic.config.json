@@ -2,5 +2,7 @@
   "name": "ionic-auth",
   "app_id": "24eaf7e8",
   "type": "ionic-angular",
-  "integrations": {}
+  "integrations": {
+    "cordova": {}
+  }
 }
