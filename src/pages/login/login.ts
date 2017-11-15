@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage } from 'ionic-angular';
+import { IonicPage, ViewController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -8,6 +8,14 @@ import { IonicPage } from 'ionic-angular';
 })
 export class LoginPage {
 
-  constructor() {
+  constructor(private viewCtl: ViewController) {
   }
+
+  onLogin() {
+  }
+
+  onCancel() {
+    this.viewCtl.dismiss();
+  }
+
 }

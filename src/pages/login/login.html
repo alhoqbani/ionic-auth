@@ -1,12 +1,33 @@
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>Login</ion-title>
-  </ion-navbar>
-
+  <ion-toolbar>
+    <ion-title text-center>
+      Log in
+    </ion-title>
+  </ion-toolbar>
 </ion-header>
 
 
-<ion-content padding>
 
+<ion-content padding>
+  <ion-card>
+    <ion-card-header>
+      Login
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-label stacked>Email</ion-label>
+          <ion-input type="text"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label stacked>Password</ion-label>
+          <ion-input type="password"></ion-input>
+        </ion-item>
+
+        <button ion-button full color="success" (click)="onLogin()">Login</button>
+        <button ion-button full color="danger" (click)="onCancel()">Cancel</button>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

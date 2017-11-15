@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage } from 'ionic-angular';
+import { IonicPage, ModalController } from 'ionic-angular';
+import { SignupPage } from '../signup/signup';
+import { LoginPage } from '../login/login';
 
 @IonicPage()
 @Component({
@@ -8,12 +10,18 @@ import { IonicPage } from 'ionic-angular';
 })
 export class WelcomePage {
 
-  constructor() {
+  constructor(private modalCtl: ModalController) {
   }
 
   signup() {
+    const signupModal = this.modalCtl.create(SignupPage);
+
+    signupModal.present();
   }
 
   login() {
+    const loginModal = this.modalCtl.create(LoginPage);
+
+    loginModal.present();
   }
 }

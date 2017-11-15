@@ -1,12 +1,42 @@
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>Sing Up</ion-title>
-  </ion-navbar>
-
+  <ion-toolbar>
+    <ion-title text-center>
+      Sign Up
+    </ion-title>
+  </ion-toolbar>
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding class="appBackground">
+  <ion-card>
+    <ion-card-header>
+      Sign Up
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-label stacked>Name</ion-label>
+          <ion-input type="text"></ion-input>
+        </ion-item>
 
+        <ion-item>
+          <ion-label stacked>Email</ion-label>
+          <ion-input type="text"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label stacked>Username</ion-label>
+          <ion-input type="text"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label stacked>Password</ion-label>
+          <ion-input type="password"></ion-input>
+        </ion-item>
+
+        <button ion-button full color="success" (click)="onSignup()">Sign up</button>
+        <button ion-button full color="danger" (click)="onCancel()">Cancel</button>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
