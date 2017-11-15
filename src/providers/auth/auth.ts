@@ -12,4 +12,8 @@ export class AuthProvider {
     return firebase.auth().createUserWithEmailAndPassword(email, password);
   }
 
+  loginUser(email: string, password: string) {
+    return firebase.auth().signInWithEmailAndPassword(email, password)
+  }
+
 }

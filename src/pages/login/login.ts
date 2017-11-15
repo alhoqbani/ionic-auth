@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, ViewController } from 'ionic-angular';
+import { AlertController, IonicPage, LoadingController, ViewController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthProvider } from '../../providers/auth/auth';
 
 @IonicPage()
 @Component({
@@ -10,7 +11,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class LoginPage implements OnInit {
   loginForm: FormGroup;
 
-  constructor(private viewCtl: ViewController, private fb: FormBuilder) {
+  constructor(private viewCtl: ViewController,
+              private loadCtl: LoadingController,
+              private alertCtl: AlertController,
+              private fb: FormBuilder,
+              private authProvider: AuthProvider) {
   }
 
   ngOnInit(): void {
@@ -22,7 +27,23 @@ export class LoginPage implements OnInit {
 
   onSubmit() {
     const value = this.loginForm.value;
-    console.log(value);
+    const loading = this.loadCtl.create({
+      content: 'Checking ...'
+    });
+    loading.present();
+    this.authProvider.loginUser(value.email, value.password)
+      .then(data => {
+        loading.dismiss();
+      })
+      .catch(error => {
+        loading.dismiss();
+        const alert = this.alertCtl.create({
+          title: 'Login Failed',
+          message: error.message,
+          buttons: ['Ok']
+        });
+        alert.present();
+      });
   }
 
   onCancel() {
