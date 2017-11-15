@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage} from 'ionic-angular';
+import { IonicPage } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -9,5 +9,11 @@ import { IonicPage} from 'ionic-angular';
 export class WelcomePage {
 
   constructor() {
+  }
+
+  signup() {
+  }
+
+  login() {
   }
 }

@@ -6,7 +6,28 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding id="welcome">
+  <img src="assets/imgs/logo.png" class="logo"/>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <h1 text-center>Welcome to Ionic Auth</h1>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col align-items-center text-center>
+        <button ion-button full (click)="signup()">Sign up</button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col align-items-center text-center>
+        <button ion-button full (click)="login()">Log in</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
 
 <ion-footer>
