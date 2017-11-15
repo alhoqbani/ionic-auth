@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, ViewController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthProvider } from '../../providers/auth/auth';
 
 @IonicPage()
 @Component({
@@ -10,7 +11,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class SignupPage implements OnInit {
   signupForm: FormGroup;
 
-  constructor(private viewCtl: ViewController, private fb: FormBuilder) {
+  constructor(private viewCtl: ViewController,
+              private fb: FormBuilder,
+              private authProvider: AuthProvider) {
   }
 
   ngOnInit(): void {
@@ -23,7 +26,7 @@ export class SignupPage implements OnInit {
 
   onSubmit() {
     const value = this.signupForm.value;
-    console.log(value);
+    this.authProvider.signupUser(value.email, value.password);
   }
 
   onCancel() {
