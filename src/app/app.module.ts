@@ -16,7 +16,6 @@ import { HomePage } from '../pages/home/home';
     MyApp,
     SignupPage,
     LoginPage,
-    HomePage,
   ],
   imports: [
     BrowserModule,
@@ -27,7 +26,6 @@ import { HomePage } from '../pages/home/home';
     MyApp,
     SignupPage,
     LoginPage,
-    HomePage
   ],
   providers: [
     StatusBar,
